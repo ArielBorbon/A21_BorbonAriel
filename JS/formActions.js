@@ -77,7 +77,6 @@ function resaltarLabel(elemento, accion) {
 
 
 function resaltar(evento) {
-
     evento.target.classList.add("selected");
 
     resaltarLabel(evento.target, 'add');
@@ -98,4 +97,41 @@ function resaltarDesResaltar(evento) {
 
 
 
+
+
+window.onload = function () {
+
+    const form = document.getElementsByTagName("form");
+    const inputs = form[0].getElementsByTagName("input");
+    const selects = form[0].getElementsByTagName("select");
+
+    for (let input of inputs) {
+
+        input.onfocus = resaltarDesResaltar;
+
+        input.addEventListener("blur", resaltarDesResaltar);
+
+        input.addEventListener("input", validarInputEnTiempoReal);
+
+        input.addEventListener("blur", validarInputEnTiempoReal);
+    }
+
+
+
+    for (let select of selects) {
+
+        select.onfocus = resaltar;
+
+        select.addEventListener("blur", resaltarDesResaltar)
+
+        select.addEventListener("blur", validarInputEnTiempoReal);
+
+        select.addEventListener("change", validarInputEnTiempoReal);
+
+    }
+    
+
+
+    llenarNacionalidad(); // pendiente
+}
 
