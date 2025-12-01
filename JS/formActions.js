@@ -55,3 +55,47 @@ function validarInputAlMomento(evento) {
 
     }
 }
+
+
+function resaltarLabel(elemento, accion) {
+    let label;
+
+    if (elemento.type === "checkbox") {
+        label = elemento.parentElement;
+    }
+    else {
+        label = elemento.previousElementSibling;
+    }
+
+    if (label && label.tagName === 'LABEL') {
+        if (accion === 'add') label.classList.add("selected_2");
+        if (accion === 'remove') label.classList.remove("selected_2");
+        if (accion === 'toggle') label.classList.toggle("selected_2");
+    }
+}
+
+
+
+function resaltar(evento) {
+
+    evento.target.classList.add("selected");
+
+    resaltarLabel(evento.target, 'add');
+}
+
+function noResaltar(evento) {
+    
+    evento.target.classList.remove("selected");
+
+    resaltarLabel(evento.target, 'remove');
+}
+
+function resaltarDesResaltar(evento) {
+    evento.target.classList.toggle("selected");
+
+    resaltarLabel(evento.target, 'toggle');
+}
+
+
+
+
