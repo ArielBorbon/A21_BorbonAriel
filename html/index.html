@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match - Encuentra a tu media toronja</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../JS/formActions.js"></script>
+
+</head>
+
+<body>
+
+    <div class="main-div">
+        <div class="dotted-container">
+
+            <h1>Encuentra a tu match</h1>
+
+
+            <form action="">
+
+                <label for="foto">Sube tu foto aqui</label>
+                <input type="file" name="foto" accept="image/*" required/>
+
+                <label for="nombre">Tu nombre</label>
+                <input type="text" id="nombre" name="nombre"/>
+
+                <label for="apellido">Tu apellido</label>
+                <input type="text" id="apellido" name="apellido"/>
+
+                <label for="correo">Tu correo electronico</label>
+                <input type="text" id="correo" name="correo"/>
+
+                <label for="genero">Tu genero</label>
+                <select name="genero" id="genero" required>
+                    <option value="male">Hombre</option>
+                    <option value="female">Mujer</option>
+                    <option value="other">Otros</option>
+                </select>
+
+                <fieldset>
+
+                    <legend>¿En que estas interesado?</legend>
+
+                    <div class="checkbox-group">
+                        <label for="interes"><input type="checkbox" name="interes" value="Hombre"> Hombres</label>
+
+                        <label for="interes"><input type="checkbox" name="interes" value="Mujer"> Mujeres</label>
+                    </div>
+
+                </fieldset>
+
+
+
+                <label for="nacionalidad">Nacionalidad de tu otra mitad</label>
+
+                <select name="nacionalidad" id="nacionalidad" required>
+                    <option value="" disabled selected>Seleciona la nacionalidad de tu otra mitad</option>
+                </select>
+
+                <button type="submit" class="button">Voy a tener suerte</button>
+
+
+
+            </form>
+
+        </div>
+    </div>
+</body>
+
+
+
+</html> 
