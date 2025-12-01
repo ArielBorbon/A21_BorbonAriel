@@ -26,3 +26,32 @@ const NACIONALIDADES_ACEPTADAS = [
 
 const REGEX_SOLO_LETRAS = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
 
+function validarInputAlMomento(evento) {
+    const input = evento.target;
+    const valor = input.value;
+    const nombreCampo = input.name;
+    let hayError = false;
+
+    if (valor.trim() === "") {
+        hayError = true;
+    }
+
+    if (nombreCampo === "nombre" || nombreCampo === "apellido") {
+
+        if (valor !== "" && !REGEX_SOLO_LETRAS.test(valor)) {
+            hayError = true;
+        }
+    }
+
+    if (hayError) {
+
+        input.style.borderColor = "red";
+        input.style.outlineColor = "red";
+
+    } else {
+
+        input.style.borderColor = "";
+        input.style.outlineColor = "";
+
+    }
+}
