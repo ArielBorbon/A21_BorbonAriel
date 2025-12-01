@@ -83,7 +83,7 @@ function resaltar(evento) {
 }
 
 function noResaltar(evento) {
-    
+
     evento.target.classList.remove("selected");
 
     resaltarLabel(evento.target, 'remove');
@@ -129,9 +129,24 @@ window.onload = function () {
         select.addEventListener("change", validarInputEnTiempoReal);
 
     }
+
+
+
+    llenarNacionalidad();
     
+}
 
 
-    llenarNacionalidad(); // pendiente
+
+
+function llenarNacionalidad() {
+    const nacionalidad = document.getElementById("nacionalidad");
+
+    for (let { key, name } of NACIONALIDADES_ACEPTADAS) {
+        const option = document.createElement("option");
+        option.value = key;
+        option.innerHTML = name;
+        nacionalidad.appendChild(option);
+    }
 }
 
