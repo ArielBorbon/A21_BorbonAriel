@@ -23,3 +23,6 @@ const NACIONALIDADES_ACEPTADAS = [
 ];
 
 
+
+const REGEX_SOLO_LETRAS = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
