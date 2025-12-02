@@ -100,40 +100,28 @@ function resaltarDesResaltar(evento) {
 
 
 window.onload = function () {
+    const form = document.getElementsByTagName("form")[0];
 
-    const form = document.getElementsByTagName("form");
-    const inputs = form[0].getElementsByTagName("input");
-    const selects = form[0].getElementsByTagName("select");
+    form.addEventListener("submit", enviarFormulario);
+
+    const inputs = form.getElementsByTagName("input");
+    const selects = form.getElementsByTagName("select");
 
     for (let input of inputs) {
-
         input.onfocus = resaltarDesResaltar;
-
         input.addEventListener("blur", resaltarDesResaltar);
-
-        input.addEventListener("input", validarInputEnTiempoReal);
-
-        input.addEventListener("blur", validarInputEnTiempoReal);
+        input.addEventListener("input", validarInputAlMomento);
+        input.addEventListener("blur", validarInputAlMomento);
     }
-
-
 
     for (let select of selects) {
-
         select.onfocus = resaltar;
-
-        select.addEventListener("blur", resaltarDesResaltar)
-
-        select.addEventListener("blur", validarInputEnTiempoReal);
-
-        select.addEventListener("change", validarInputEnTiempoReal);
-
+        select.addEventListener("blur", resaltarDesResaltar);
+        select.addEventListener("blur", validarInputAlMomento);
+        select.addEventListener("change", validarInputAlMomento);
     }
 
-
-
     llenarNacionalidad();
-    
 }
 
 
@@ -150,3 +138,33 @@ function llenarNacionalidad() {
     }
 }
 
+
+
+
+function enviarFormulario(evento) {
+    evento.preventDefault(); 
+
+    const nombre = document.getElementById("nombre");
+    const apellido = document.getElementById("apellido");
+    const nacionalidad = document.getElementById("nacionalidad");
+
+    if (nombre.value.trim() === "" || !REGEX_SOLO_LETRAS.test(nombre.value)) {
+        alert("Por favor, corrige el campo Nombre.");
+        nombre.focus(); 
+        return; 
+    }
+
+    if (apellido.value.trim() === "" || !REGEX_SOLO_LETRAS.test(apellido.value)) {
+        alert("Por favor, corrige el campo Apellido.");
+        apellido.focus();
+        return;
+    }
+
+    if (nacionalidad.value === "" || nacionalidad.value === "...") {
+        alert("Por favor, selecciona una nacionalidad.");
+        nacionalidad.focus();
+        return;
+    }
+
+    window.location.href = "match.html";
+}
